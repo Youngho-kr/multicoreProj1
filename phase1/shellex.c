@@ -69,6 +69,14 @@ int builtin_command(char **argv)
         exit(0);
     if (!strcmp(argv[0], "&")) /* Ignore singleton & */
         return 1;
+    if (!strcmp(argv[0], "cd")) {
+        chdir(argv[1]);
+        return 1;
+    }
+    if (!strcmp(argv[0], "history")) {
+        printf("history!\n");
+        return 1;
+    }
     return 0; /* Not a builtin command */
 }
 /* $end eval */
