@@ -22,9 +22,20 @@ void checkcmdline(char *cmdline);
 
 void changeStr(char *cmdline, int i, int j, char *str);
 
+char HISTORY_PATH[MAXLINE];
+
 int main()
-{
-    FILE *file = fopen("history", "a");
+{   
+    // HISTORY_PATH에 history경로 저장
+    if(getcwd(HISTORY_PATH, MAXLINE) == NULL) {
+        printf("fail to read path\n");
+        exit(1);
+    }
+
+    strcat(HISTORY_PATH, "/history");
+
+    //  history 파일 생성
+    FILE *file = fopen(HISTORY_PATH, "a");
     fclose(file);
 
     char cmdline[MAXLINE]; /* Command line */
@@ -233,7 +244,7 @@ void writeHistory(char **argv, char *cmdline)
     FILE *file;
     char str[MAXLINE];
 
-    file = fopen("history", "r");
+    file = fopen(HISTORY_PATH, "r");
     while(!feof(file)) {
         fgets(str, MAXLINE, file);
     }
@@ -245,7 +256,7 @@ void writeHistory(char **argv, char *cmdline)
         return;
     }
 
-    file = fopen("history", "a");
+    file = fopen(HISTORY_PATH, "a");
     int i = 0;
     while (1)
     {
@@ -268,7 +279,7 @@ void writeHistory(char **argv, char *cmdline)
 // index = -1 -> 모든 history 출력
 void openHistory(int index)
 {
-    FILE *file = fopen("history", "r");
+    FILE *file = fopen(HISTORY_PATH, "r");
 
     // history 명령어로 이 함수 호출하므로 파일이 없는 경우는 없음
 
@@ -288,7 +299,7 @@ void openHistory(int index)
 // index = -1일 때는 가장 최근 명령어 argv[0]에 저장
 void callHistory(int index, char *returnstring)
 {
-    FILE *file = fopen("history", "r");
+    FILE *file = fopen(HISTORY_PATH, "r");
 
     char str[MAXLINE];
 
