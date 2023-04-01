@@ -14,3 +14,128 @@ rmdir testdir2
 mkdir testdir2
 ls
 exit
+-a
+ls -a
+history
+ls
+history
+exit
+ls | grep she
+cat shellex.c | less
+exit
+cat shellex.c | less
+ls
+exit
+history
+cat shellex.c | less
+cat shellex.c kk
+ls -a s
+ls s
+ls
+ls -a -a
+ls -a -a -a
+ls
+ls -a
+exit
+cat shellex.c | grep -i "get"
+cat shellex.c
+cat README.tx
+[At
+cat README.txt
+ls
+exit
+less
+grep
+sort
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+exit
+ls
+ls ls
+history
+ls
+ls
+ls
+history
+ls ls
+ls
+ls
+ls
+history
+ls
+ls
+exit
+ls
+ls
+ls
+history
+ls
+exit
+ls
+ls
+history
+ls
+ls
+exit
+ls
+history
+ls
+ls
+ls
+history
+ls
+ls
+exit
+ls
+ls
+exit
+ls
+exit
+ls
+history
+ls
+ls
+ls
+history
+exit
+ls
+ls
+history
+ls
+ls
+exit
+ls
+ls -a
+history
+ls
+-a
+exit
+ls
+history
+ls
+ls
+history
+ls
+ls
+history
+ls
+ls
+exit
+ls
+history
+ls
+history
+exit
+ls
+history
+ls
+history
+exit

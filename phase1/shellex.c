@@ -242,22 +242,48 @@ void writeHistory(char **argv, char *cmdline)
         return;
 
     FILE *file;
+
+    // str에 history의 가장 최근 명령어 저장
     char str[MAXLINE];
 
     file = fopen(HISTORY_PATH, "r");
     while(!feof(file)) {
         fgets(str, MAXLINE, file);
     }
-    removeEnter(str);
-
     fclose(file);
 
-    if(strcmp(str, cmdline) == 0) {
-        return;
+    removeEnter(str);
+
+    // 가장 최근 명령어와 같은 지 확인
+    char *history_argv[MAXARGS]; /* Argument list execve() */
+    char buf[MAXLINE];   /* Holds modified command line */
+    int bg;              /* Should the job run in bg or fg? */
+
+    strcpy(buf, str);
+    bg = parseline(buf, history_argv);
+
+    int i = 0;
+    int flag = 0;
+    while(1) {
+        if(argv[i] == NULL)
+            break;
+        if(history_argv[i] == NULL)
+            break;
+
+        if(strncmp(argv[i], history_argv[i], MAXLINE)){
+            flag = 1;
+            break;
+        }
+        i++;
     }
 
+    // 가장 최근 명령어와 같으면 저장하지 않음
+    if(flag == 0)
+        return;
+
+    // history에 저장
     file = fopen(HISTORY_PATH, "a");
-    int i = 0;
+    i = 0;
     while (1)
     {
         fprintf(file, argv[i]);
