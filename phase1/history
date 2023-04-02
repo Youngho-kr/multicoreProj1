@@ -525,3 +525,14 @@ cat history | grep ls | grep a
 cat history | grep ls | grep a | sort
 ls
 exit
+ls
+ls | grep c
+ls | grep c | sort
+cat history | grep l | grep s
+cat history | grep l | grep s | sort
+history
+ls
+./shellex.c
+./shellex
+ls
+exit
