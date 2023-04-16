@@ -1517,3 +1517,3028 @@ exit
 ./a.out -al
 jobs
 ./a.out
+ls | grep c&
+ps
+ls | grep c
+ps
+jobs
+ls | grep c&
+exit
+cat ".history" | grep c
+exit
+cat ".history" | grep c
+exit
+cat ".history" | grep c
+exit
+cat ".history" | grep c
+exit
+cat ".history" | grep c
+exit
+ls | grep c
+cat .history | grep c
+cat ".history"
+cat ".history" | sort
+exit
+cat ".history" | sort
+exit
+cat ".history" | sort
+exit
+cat ".history" | sort
+exit
+cat ".history" | sort
+exit
+cat ".history" | sort
+exit
+cat ".history" | sort
+exit
+cat ".history" | sort
+exit
+cat ".history" | sort
+cat "csapp.c" | sort
+exit
+cat ".history" | grep "c"
+ps
+cat ".history" | grep 'c'
+cat '.history" | grep c
+cat ".history" | grep c
+cat .history | grep "c"
+ls
+exit
+cat '.history' | grep c
+exit
+cat .history | grep "c"
+exit
+cat ".history" | grep 'c'
+exit
+cat ".history"
+cat .'history'
+cat '.history'
+cat 'history'
+cat '.history'
+cat ".history"
+exit
+cat ".history"
+exit
+cat ".history"
+cat '.history'
+cat "csapp.c"
+cat '.csapp'
+cat 'csapp.c'
+exit
+cat '.history'
+ls
+cat 'test.c'
+ls
+jobs
+ps
+./.aout
+jobs
+ps
+./a.out
+jobs
+bg 
+jobs
+ps
+./a.out
+ps
+jobs
+./a.out
+jobs
+kill 
+kill 
+fg 
+ps
+jobs
+fg 
+ls
+make
+./s	
+./shellex
+ps
+./shellex
+ps
+jobs
+./a.out
+bg 
+jobs
+ps
+./a.out
+ㅣㄴ
+ls
+mkdir testdir
+cd testdir
+ls
+cd ..
+cd
+ls
+exit
+ls
+ls -a
+ls -al
+ls
+rmdir testdir
+ls .
+ls -a
+touch
+touch --help less
+ls
+cat csapp.c
+cat 'csapp.c'
+echo "ss"
+mkdir testdir
+touch testdir/cse4000
+cd testdir
+ls
+cat cse4000
+rm cse4000
+ls
+cd .
+cd ..
+ls
+rm testdir
+rmdir testdir
+ls
+histoyr
+history
+"
+history
+cat ".history"
+cat ".history" | sort
+cat .history
+cat .history | sort
+cat "shellex.c" | sort
+exit
+cat '.history' | sort
+cat ".history" | sort
+cat
+ls
+ps
+jobs
+cat ".history" | sort | grep "c"
+history
+cat ".history" | sort | grep "c"
+exit
+ls
+cat ".history"
+exit
+cat ".history"
+exit
+cat ".history"
+cat '.history'
+cat '.history' | sort
+exit
+cat ".history" | sort
+cat '.history'
+cat '.history' | sort | grep "c"
+exit
+cat ".history" | grep 'c' | grep "a"
+ls -al | grep app
+cat ".history" | grep -i "ai" | sort -r
+history
+exit
+jobs
+ls -al
+ls
+sort shellex.c&
+sort shellex.c
+ls
+ls&
+exit
+ls 
+./a.out 
+jobs
+kill 
+ps
+jobs
+ps
+jobs
+exit
+ls 
+./a.out 
+kill 
+ps
+exit
+ls 
+ps
+jobs
+ps
+exit
+ps
+exit
+ls
+exit
+ls
+ps
+jobs
+./a.out&
+ls&
+exit
+ls&
+ls
+ps
+jobs
+./a.out
+ps
+jobs
+fg 
+ls
+./a.out
+jobs
+bg 
+ps
+jobs
+fg 
+ls&
+exit
+ls&
+exit
+ls&
+exit
+ls
+ls&
+exit
+ls&
+exit
+ls&
+exit
+ls&
+exit
+ls&
+exit
+ls
+exit
+ls
+./a.out
+jobs
+./.aout
+jobs
+ps
+./a.out
+ls -al .history | grep c
+cat ".history" | grep -i 'ai'
+exi
+exit
+sleep 5
+jobs
+ls
+sleep 100
+ps
+jobs
+./a.out
+jobs
+bg 
+ps
+jobs
+kill 
+jobs
+./a.out
+ls
+jobs
+.
+./a.out
+jobs
+bg 
+ps
+jobs
+kill 
+kill 
+kill 2
+exit
+.//a.out
+jobs
+ps
+exit
+./a.out
+jobs
+kill 
+./a.out
+jobs
+kill 
+ls
+./a.out
+jobs
+./a.out
+jobs
+bg 
+bg 
+ls
+jobs
+kill 
+jobs
+ls
+./a.out
+jobs
+ps
+./a.out
+jobs
+./a.out
+ls
+sleep 100
+./a.out
+jobs
+bg 
+jobs
+sleep 100
+jobs
+bg 
+ps
+jobs
+kill 
+jobs
+ls
+./a.out
+jobs
+ps
+jobs
+kill 
+ps
+jobs
+exit
+./a.out
+ls
+jobs
+./a.out
+jobs
+bg 
+bg 
+bg 
+jobs
+././
+kill 
+kill 
+kill 
+jobs
+ls
+jobs
+ps
+jobs
+exit
+ls
+ps
+jobs
+exit
+./a.out
+jobs
+fg 
+jobs
+exit
+ls
+sleep 100
+./a.out
+ls
+ps
+jobs
+bg 
+ls
+./a.out
+sleep 100
+ls
+slepp 100
+jobs
+ps
+sleep 100
+jobs
+kill 
+kill 
+jobs
+ps
+exit
+sleep 100
+jobs
+bg 
+jobs
+fg 
+fg  2
+jobs
+fg 
+jobs
+./a.out
+bg 
+bg 
+bg 
+jobs
+./a.out
+jobs
+ps
+bg 
+jobs
+exit
+ls
+./a.out
+sleep 100
+sleep 10
+jobs
+ls
+ps
+jobs
+exit
+sleep 100
+exit
+ls
+ls | grep c
+ls | grep "c"
+ls | grep "c "
+make
+./s	
+exit
+ls | grep "c"
+ls | grep "c "
+exit
+ls | grep "c "
+ls | grep c
+ls | grep "c"
+ls grep " c"[D[D
+ls | grep " c"
+exit
+ps
+jobs
+exit
+ls
+ps | grep c
+grep c
+ls
+exit
+ls
+make
+./a.out
+jobs
+kill 
+exit
+s
+t
+ 
+ 
+ks 
+s 
+ 
+ 
+ 
+s 
+ 
+ 
+s 
+ 
+ 
+ 
+s 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ls
+ps
+jobs
+ps
+eixt
+exit
+ls
+| | grep
+exit | 
+ls
+l
+ l
+history ry
+ls |   grep    c 
+exit 
+ls
+exit
+ls
+s
+ls
+exit
+ls
+exi
+exit
+ls | grep c
+ls | gerp c" c"
+exit |  c" c"
+ls
+ls | grep c
+exit |  c
+ls
+ls | grep c
+ls | grep c" c"
+ㄷ턋 | � c" c"
+exit |  c" c"
+ls
+ls | grep c" c"
+exit |  c" c"
+ls | grep c" c"
+history | ry c" c"
+exit |  c" c"
+ls | grep c
+exit |  c
+ls | grep c
+history | ry c
+exit |  c
+ls | grep c
+history | ry c
+exit |  c
+ls | grep c
+history | ry c
+l | ry c
+history | ry c
+ls
+history
+
+
+
+
+exit
+ls 
+history 
+ls | grep c 
+history 
+history 
+history 
+history 
+exit 
+ls | grep c
+
+ls | grep c
+
+ls
+
+exit
+
+exit
+
+exit
+
+ls
+ls | grep c
+ls
+ls | grep c
+exit
+ls
+ps
+exit
+make
+exit
+exit 
+ls
+exit
+exit 
+ls
+exit
+exit 
+ls
+history
+history 
+ls 
+exit
+make
+exit 
+ls
+ls | grep c
+ls | grep 'c'
+exit
+ls
+"ls"
+ls | grep c | "sort"
+ls|grep'c'
+ls|grep 'c'|sort
+sort
+exit
+ls | sort
+exit
+ls|sort
+ls|grep c|sort
+ls|grep "c"|sort
+
+ls
+ls &
+
+exit
+ls &
+
+exit 
+ls
+ls &
+exit
+ls
+ls &
+jobs
+ps
+ls
+ls &
+
+exit
+ls &
+
+ps
+
+jobs
+jobs &
+sleep 100 &
+jobs
+ps
+exit
+ls
+ls &
+
+ps
+
+exit
+ls &
+
+ls
+ps
+,
+exit
+ls &
+
+ps
+exit
+ls &
+
+ps
+exit
+ls &
+ps
+ls
+ls &
+
+ls
+
+ps
+
+exit
+ls
+ls &
+
+ls &
+ps
+exit
+ls &
+ls
+
+exit
+ls &
+
+ps
+exit
+ls
+ls &
+
+ps
+
+exit
+ls &
+ps
+ls &
+
+ps
+
+exit
+
+ls &
+
+ps
+jobs
+ps &
+
+exit
+
+ls
+ps
+ls | grep c
+ls|grep "c"
+ls | grep "c"
+ls| grep c
+ls | grep c'
+exit
+ls
+ls | grep c
+ls &
+
+ls
+
+ls
+make
+exit
+ls
+
+ls
+ls&
+
+jobs
+jobs&
+ps
+exit
+ls
+ls&
+
+sleep 100 &
+sleep
+sleep 50
+exit
+./a.out
+jobs
+bg 
+jobs
+bg 
+bg
+bg 
+exit
+bg 
+./a.out &
+ls
+job
+jobs
+kill 
+ls
+./a.out &
+jobs
+exit
+ls&
+
+jobs
+
+./a.out&
+
+jobs
+kill 
+
+ls | grep c
+exit
+ls
+ls &
+
+jobs
+sleep 100 &
+
+jobs
+exot
+exit
+sleep 
+sleep 100 &
+
+jobs
+kill 
+sleep 100 &
+sleep 10 &
+jobs
+sleep 1000&
+jobs
+ls
+
+ls
+exit
+jobs
+ps
+
+jobs
+kill 
+
+exit
+sleep 100 &
+jobs
+kill 
+exit
+ls
+sleep 100 &
+sleep 10 &
+sleep 1000 &
+jobs
+sleep 1000
+jobs
+kill 
+jobs
+bg 
+jobs
+bg 
+ls
+jobs
+sleep 5 &
+jobs
+fg 
+jobs
+bg 
+ls
+jobs
+./a.out &
+
+jobs
+sleep 10 &
+ls
+sleep 10
+./a.out
+
+jobs
+kill 
+kill 
+jobs
+kill 
+ls
+jobs
+exit
+ls
+sleep 100 &
+jobs
+sleep 1 &
+
+jobs
+exit
+
+ls
+ls &
+ls&
+jobs
+./a.out&
+
+./a.out
+ls
+jobs
+kill 
+ls|grep " c"|sort
+history
+cat ".history"
+cat ".history"|sort
+history
+exit
+
+ls
+ls &
+history
+  
+history
+history &
+ls&
+
+sleep 10&
+'sleep'
+sleep '100' &
+
+jobs
+ls
+sleep 10 &
+sleep 100 &
+job
+sjobs
+
+jobs
+sleep 8 &
+sleep 100 &
+jobs
+sleep 5 &
+sleep 10 &
+jobs
+
+jobs
+exit
+ls
+jobs
+sleep 100 &
+sleep 3 &
+skeeo 10
+jobs
+sleep 1000
+jobs
+bg 
+sleep 3 &
+sleep 10 &
+jobs
+exit
+sleep 100s
+jobs
+sleep 100
+sleep 100 &
+jobs
+fg 
+jobs
+bg 
+jobs
+fg 
+jobs
+fg 
+jobs
+fg 
+jobs
+fg 
+exit
+
+sleep 100 &
+ls
+fg 
+jobs
+fg 
+jobs
+fg 
+jobs
+ls
+sleep 100 &
+jobs
+sleep 10s &
+jobs
+
+jobs
+fg 
+jobs
+sleep 10s
+jobs
+jbos
+fg 
+jobs
+ps
+
+ps
+jobs
+kill 
+jobs
+ls
+sleep 10 &
+job
+jobs
+fg 
+jobs
+ls
+jobs
+fg 
+jobs
+ps
+kill 
+jobs
+kkill 
+kill 
+jobs
+ps
+jobs
+kill 
+jobs
+fg 
+jobs
+kill 
+kill 
+kill 
+jobs
+bg 
+fg 
+jobs
+bg 
+jobs
+ls
+ls&
+jobs
+ps
+exit
+sleep 100 &
+sleep 10
+
+sleep 100 &
+jobs
+fg 
+jobs
+exit
+sleep 100 &
+sleep 10
+sleep 100 &
+
+sleep 10
+sleep 100 &
+jobs
+fg 
+jobs
+exit
+
+ls
+sleep 100 &
+sleep 10
+sleep 100 &
+jobs
+fg 
+exit
+sleep 100&
+sleep 10
+sleep 100 &
+fg 
+jobs
+exit
+sleep 100 &
+sleep 10
+
+sleep 100 &
+jobs
+fg 
+jobs
+ps
+jobs
+fg 
+exit
+sleep 100 &
+sleep 10
+sleep 100 &
+sleep 10
+jobs
+exit
+sleep 100 &
+sleep 10 &
+sleep 100 &
+
+jobs
+ps
+
+jobs
+fg 
+jobs
+sleep 10
+jobs
+kill 
+ps
+jobs
+kill 
+jobs
+exit
+sleep 100 &
+
+jobs
+sleep 10
+ls
+sleep 100 &
+sleep 10
+jobs
+sleep 100 
+jobs
+sleep 100 &
+ls
+jobs
+fg 
+jobs
+fg 
+sleep 100 &
+sleep 5 &
+job
+jobs
+sleep 100 &
+jobs
+sleep 5
+jobs
+fg 
+jobs
+fg 
+sleep 100 &
+jbos
+jobs
+sleep 10
+
+jobs
+sleep 100 &
+
+ps
+
+jobs
+fg 
+jobs
+ps
+exit
+sleep 100 &
+sleep 5
+sleep 100 &
+jobs
+fg 
+jobs
+ps
+exit
+sleep 100 &
+sleep 6
+sleep 100 &
+ps
+jobs
+kill 
+jobs
+ps
+sleep 5
+sleep 100 &
+jobs
+fg 
+exit
+sleep 5
+
+jobs
+fg 
+jobs
+ps
+fg 
+sleep 100 &
+jobs
+sleep 5
+jobs
+sleep 100 &
+jobs
+sleep 10 &
+jobs
+fg 
+jobs
+sleep 100 &
+sleep 5
+jobs
+sleep 100 
+ls
+jobs
+sleep 100 &
+jobs
+fg 
+sleep 100 &
+sleep 3
+
+sleep 100 &
+jobs
+fg 
+ls
+sleep 100 &
+sleep 3
+sleep 100 &
+jobs
+fg 
+jobs
+exit
+sleep 100 &
+sleep 10
+kill 
+jobs
+sleep 3
+sleep 100 &
+sleep 3
+jobs
+sleep 100 &
+jobs
+fg 
+jobs
+exit
+sleep 100 &
+sleep 3
+sleep 100 &
+jobs
+fg 
+jobs
+ps
+exit
+sleep 100 &
+sleep 10 &
+jobs
+sleep 3
+sleep 100 &
+jobs
+kill 
+sleep 100 &
+sleep 10 &
+sleep 3
+
+sleep 100 &
+jobs
+kill 
+]sleep 100 &
+ls
+sleep 100 &
+jobs
+sleep 10 &
+sleep 3
+
+jobs
+sleep 100 &
+jobs
+kill 
+jobs
+fg 
+jobs
+exit
+sleep 100 &
+jobs
+sleep 10 &
+sleep 1&
+jobs
+exit
+sleep 100 &
+sleep 1&
+jobs
+sleep 100 &
+jobs
+ps
+jobs
+kill 
+jobs
+ps
+ls
+ps
+exit
+ls
+exit
+sleep 100 &
+sleep 2
+sleep 100 &
+sleep 1
+sleep 100 &
+sleep 1&
+jobs
+ps
+sleep
+jobs
+exi
+exit
+sleep 100 &
+sleep 3
+jobs
+sleep 100 &
+jobs
+fg 
+jobs
+ps
+exit
+sleep 100 &
+sleep 3
+ps
+sleep 100 &
+jobs
+fg 
+ps
+jobs
+
+exit
+sleep 10s
+sleep 10
+jobs
+sleep 10s
+
+exi
+exit
+sleep 10s
+exit
+sleep 10
+sleep 10s
+ls
+ls7
+ls &
+sleep 10s
+jobs
+kill 
+sleep 10s
+sleep 10s &
+
+jobs
+sleep 100 &
+sleep 10
+
+jobs
+kill 
+l
+jobs
+ps
+jos
+jobs
+kill 
+kill 
+ls
+jobs
+exit
+sleep 10 
+slepe 10s
+
+sleep 10s
+
+jobs
+kill 
+ps
+jobs
+
+jobs
+ps
+jobs
+exit
+sleep 10 &
+jobs
+sleep 10
+jobs
+fg 
+jobs
+sleep 100 &
+jobs
+ps
+jobs
+ps
+jobs
+bg 
+
+jobs
+ps
+jobs
+ㄷ턋
+exit
+sleep 10s
+jobs
+bg 
+ls
+jobs
+
+jobs
+ps
+exit
+sleep 10s
+
+sleep 100 &
+jobs
+sleep 1
+jobs
+ps
+sleep 1 &
+jobs
+ps
+fg 
+jobs
+ls
+ps
+jobs
+kill 
+ps
+exit
+sleep 10s
+sleep 2s
+jobs
+bg 
+s
+jobs
+ps
+sleep 10 &
+slepe 100 &
+sleep 1
+jobs
+ps
+fg 
+ps
+jobs
+exit
+sleep 5s
+ls
+jobs
+fg 
+jobs
+ps
+exit
+ls
+sleep 100 &
+jobs
+sleep 5
+jobs
+sleep 100s
+jobs
+sleep 100s
+
+jobs
+kill 
+jobs
+sbg 
+bg 
+bg 
+
+jobs
+exit 5
+sleep 100s
+jobs
+sleep 100 &
+bg 
+jovs
+jobs
+sleep 1
+jobs
+sleep 1 &
+jobs
+
+jobs
+
+ps
+kill 
+exit
+sleep 1&
+jobs
+
+bjos
+jobs
+sleep 100 &
+jobs
+sleep 1s
+jobs
+sleep 1s
+jobs
+bg 
+jobs
+ps
+fg 
+jobs
+ps
+kill 
+jobs
+kill 
+jobs
+ps
+exit
+sleep 100 &
+sleep 10 &
+sleep 1s
+jobs
+sleep 1&
+jobs
+ps
+
+jobs
+kill 
+ps
+exit
+sleep 1s&
+jobs
+sleep 1-- &
+ls
+jobs
+ps
+history
+sleep 100 &
+sleep 5
+sleep 1s
+ls
+jobs
+bg 
+
+jobs
+bg 
+
+jobs
+exit
+sleep 10s
+sleep 100 &
+jobs
+sleep 1&
+
+jobs
+bg 
+
+jobs
+kill 
+kill 
+sleep 5s&
+jobs
+kill 
+jobs
+sleep 5s &
+jobs
+kill 
+kill 
+jobs
+exit
+sleep 10s
+
+jobs
+bg 
+sleep 100 &
+jobs
+
+jobs
+exit
+sleep 100s
+jobs
+sleep 1000s &
+sleep 10s
+bg 
+jobs
+bg 
+jobs
+sleep 100s
+jobs
+ps
+jobs
+sleep 1000s &
+jobs
+ls
+sleep 1000 &
+jobs
+kill 
+jobs
+ls
+ps
+jobs
+sleep 10
+jobs
+ps
+jobs
+kill 
+jobs
+
+jobs
+sleep 100 &
+jobs
+
+jobs
+exit
+sleep 100 &
+
+jobs
+ps
+sleep 100 &
+jobs
+kill 
+ps
+jobs
+ps
+
+ls
+jobs
+ls
+ls&
+
+jobs
+sleep 1
+jobs
+
+ls
+exit
+ls
+sleep 10s
+
+jobs
+kill 
+exit
+ls &
+
+jobs
+ls
+sleep
+exit
+sleep 100 &
+
+jobs
+ç
+
+jobs
+exit
+sleep 100 &
+
+jobs
+ps
+
+jobs
+ps
+exit
+sleep 10
+
+jobs
+bg 
+ls
+jobs
+
+ps
+sleep 100 &
+ls
+jobs
+
+jobs
+ps
+sleep 100 &
+ps
+jobs
+sleep 100 &
+
+jobs
+
+jobs
+
+jobs
+exit
+slepe 100 &
+sleep 100 &
+jobs
+
+jobs
+exit
+slepe 1-- &
+sl
+
+jobs
+sleep 100 &
+
+jobs
+ps
+sleep 100 &
+
+ps
+jobs
+
+jobs
+ps
+sleep 100 &
+
+job
+jbos
+jobs
+ps
+
+jobs
+exit
+sleep 1-- &
+sleep 100 &
+jobs
+
+jobs
+ps
+exit
+sleep 100 &
+
+jobs
+ps
+sleep 100
+jobs
+ps
+
+sleep 100 &
+
+jobs
+ps
+sleep 100
+
+jobs
+
+jobs
+
+jobs
+bg 
+job
+jobs
+
+ps
+
+ls
+jobs
+
+ps
+sleep 100
+
+jobs
+
+jobs
+ps
+jobs
+bg 
+jobs
+ps
+exit
+sleep 100 &
+
+jobs
+
+jobs
+sleep 100 
+
+jobs
+
+jobs
+fg 
+
+ps
+jobs
+
+jobs
+sleep 100 
+
+ps
+bg 
+ps
+jobs
+fg 
+
+jobs
+bg 
+ps
+
+jobs
+
+jobs
+exit
+sleep 100
+
+jobs
+sleep 100 &
+
+jobs
+ç
+
+ç
+
+jobs
+
+jobs
+exit
+sleep 100 &
+jobs
+
+jobs
+obs
+jobs
+
+jobs
+ps
+exit
+sleep 100 &
+
+ps
+
+exit
+sleep 100 &
+
+jobs
+
+ss
+
+jobs
+
+ps
+
+exit
+sleep 100 &
+
+jobs
+
+jobs
+ps
+
+jobs
+kill 
+ps
+jobs
+sleep 100 &
+
+jobs
+
+jobs
+exit
+sleep 100 &
+
+jobs
+lls
+
+job
+exit
+sleep 100 &
+
+jobs
+
+jobs
+ls
+jobs
+exit
+sleep 100 &
+
+jobs
+vf 
+fg 
+
+jobs
+sleep 100 &
+
+jobs
+
+jobs
+make
+exit
+sleep 100 &
+
+jobs
+
+jobs
+ls
+jobs
+make
+exit
+sleep 100 &
+
+jobs
+kill 
+
+jobs
+ps
+
+ls
+exit
+sleep 100 &
+
+jobs
+
+jobs
+ps
+ls | grep c &
+
+jobs
+ps
+sleep 100
+
+jobs
+bg 
+
+jobs
+ps
+
+jobs
+
+jobs
+exit
+ls | grep "C"
+ls | grep "c"
+ls | grep C
+
+jobs
+ps
+exit
+sleep 100 &
+
+jobs
+kill 
+
+ps
+jobs
+job
+jobs
+sleep 100
+
+jobs
+p
+ps
+sleep 100
+
+jobs
+ps
+exit
+sleep 100
+
+jobs
+
+ps
+sleep 100
+
+jobs
+ps
+bg 
+ps
+jobs
+kill 
+ps
+jobs
+sleep 100
+
+jobs
+
+jobs
+fg 
+ps
+
+jobs
+exit
+sleep 100
+
+jobs
+sleep 100
+
+jobs
+bg 
+
+jobs
+fg 
+ls
+jobs
+fg 
+
+jobs
+fg 
+
+jobs
+ls
+sleep 10 &
+
+jobs
+fg 
+jobs
+ps
+sleep 100 &
+
+jobs
+exit
+ls
+sleep 100 &
+jobs
+ps
+
+ps
+jobs
+exit
+sleep 100 &
+
+jobs
+ps
+sleep 100
+jobs
+ps
+jobs
+fg 
+
+jobs
+fg 
+
+jobs
+ls
+ps
+
+jobs
+ps
+sleep 100 &
+
+jobs
+ps
+sleep 100 &
+fg 
+fg 
+
+jobs
+
+jobs
+exit
+sleep 100 &
+
+jobs
+
+ps
+
+sleep 100s
+
+jobs
+ps
+exit
+sleep 100 &
+
+ps
+
+ps
+jobs
+sleep
+sleep 100
+
+ps
+sleep
+
+jobs
+ps
+exit
+sleep 100
+
+make
+ps
+sleep 100 &
+
+jobs
+
+exit
+ls
+ls &
+
+ls | grep c
+
+ls
+ps
+sleep
+sleep 100
+jobs
+fg 
+ps
+jobs
+
+jobs
+sleep 100
+
+jobs
+
+sleep 100
+
+jobs
+ps
+bg 
+jobs
+b 
+bg 
+bg 
+ls
+jobs
+fg 
+
+jobs
+ps
+kill 
+ls
+jobs
+kill 
+kill 
+
+jobs
+ps
+sleep 100 &
+jobs
+
+jobs
+exit
+sleep 100 &
+
+job
+jobs
+
+jobs
+ps
+exit
+sleep 100 &
+jobs
+
+jobs
+ps
+exit
+sleep 100 &
+ç
+
+jobs
+
+jobs
+exit
+sleep 100 &
+
+jobs
+
+jobs
+ps
+exit
+sleep 100
+
+jobs
+
+ps
+sleep 100 &
+fg 
+
+jobs
+ps
+
+jobs
+ps
+exit
+sleep 100 &
+
+jobs
+exit
+
+sleep
+exit
+sleep 100 &
+
+jobs
+ps
+
+exit
+sleep 100 &
+
+jobs
+
+sleep 100
+exit
+sleep 100 &
+
+make
+./s	
+ls
+ps
+jobs
+
+jobs
+ps
+exit
+sleep 100 &
+
+ls | grep "c"
+exit
+
+sleep 100 &
+
+jobs
+exit
+sleep 100 &
+
+jobs
+ps
+
+fg 
+
+jobs
+kill 
+
+ps
+sleep 100 &
+exit
+sleep 100 &
+
+jobs
+exit
+sleep 100 &
+
+jobs
+ps
+exit
+sleep 100 &
+jobs
+
+jobs
+ps
+exit
+sleep 100 &
+
+jobs
+./a.out &
+
+jobs
+ps
+
+jobs
+ps
+./a.out &
+
+jobs
+exit
+slep 100 &
+
+sleep 100 &
+
+jobs
+ps
+
+sleep 100
+exit
+sleep 100 &
+
+jobs
+ps
+
+jobs
+ps
+fg 
+sleep 100 &
+
+jobs
+ps
+kill 
+
+jobs
+ps
+./a.out 
+sleep 100 &
+
+ps
+
+jobs
+kill 
+
+ps
+jobs
+
+sleep 100
+sleep 10
+ls
+p
+ss
+ps
+exit
+
+sleep 100 &
+
+jobs
+ps
+exit
+sleep 100 &
+
+jobs
+ps
+exit
+
+sleep 100&
+ls
+make
+./s	
+ps
+jjobs
+bg 
+
+jobs
+
+jobs
+
+fg 
+bg 
+
+ps
+jobs
+
+ps
+jobs
+kill 
+exit
+sleep 100 &
+
+exit
+ls &
+
+jobs
+sleep 10 &
+
+jobs
+ps
+exit
+sleep 100 &
+
+jobs
+ps
+
+jobs
+ps
+exit
+sleep 100 &
+
+exit
+sleep 100 &
+
+jobs
+exit
+sleep 100 &
+
+ls &
+
+ps
+exit
+sleep 100 &
+
+jobs
+exit
+sleep 100 &
+
+jobs
+ps
+jobs
+ps
+jobs
+sleep 100 &
+
+jobs
+exit
+sleep 100
+jobs
+sleep 100 &
+
+jobs
+ps
+exit
+sleep 10 &
+jobs
+exit
+sleep 100 &
+
+jobs
+ps
+
+exit
+sleep 100 &
+
+jobs
+exit
+sleep 100
+fg 
+bg 
+jobs
+
+jobs
+ps
+exit
+sleep 100 &
+
+jobs
+exit
+sleep 100 &
+
+jobs
+ps
+
+fg 
+
+jobs
+ps
+sleep 100 &
+jobs
+sleep 100 &
+
+sleep 1000
+
+jobs
+ps
+exit
+sleep 100 &
+
+sleep 100
+exit
+sleep 100
+
+sleep 100 &
+
+make
+sleexit
+exit
+sleep 100
+jobs
+ps
+
+ps
+exit
+sleep 100 &
+
+jobs
+
+jobs
+ps
+fg 
+sleep 100 &
+
+jobs
+exit
+jobs
+history
+sleep 100 &
+jobs
+
+ps
+exit
+slep 100 &
+
+jobs
+ps
+sleep 100 &
+
+jobs
+exit
+sleep 100 &
+
+jobs
+ps
+jobs
+ps
+
+exit
+sleep 100 &
+
+jobs
+ps
+
+kill 
+exit
+sleep 100 &
+
+jobs
+ps
+exit
+sleep 100 &
+
+jobs
+
+exit
+ls
+
+s
+ls
+ls &
+
+jobs
+ps
+
+sleep 100 &
+
+jobs
+kill 
+
+jobs
+sleep 100 &
+
+jobs
+kill 
+exit
+sleep 100 &
+
+jobs
+fg 
+sleep 100 &
+
+jobs
+fg 
+sleep 100 &
+
+jobs
+sleep 100 &
+ps
+jobs
+kill 
+exit
+sleep 100 &
+
+jobs
+ps
+exit
+sleep 100 &
+jobs
+fg 
+
+jobs
+bg %`
+bg 
+
+jobs
+kill 
+exit
+sleep 100 &
+exit
+slee[p 100 &
+
+jobs
+sleep 100 &
+
+jobs
+fg 
+
+jobs
+job
+jobs
+ps
+./a.out &
+
+ls
+
+bg 
+
+ps
+
+jobs
+fg 
+jobs
+exit
+sleep 100 &
+jobs
+sleep 100
+
+jobs
+./a.out &
+
+sleep 
+jobs
+kill 
+jobs
+fg 
+
+jobs
+
+jobs
+
+exit
+sleep 100 &
+
+jobs
+ps
+fg 
+
+jobs
+sleep 100 &
+jobs
+
+jobs
+
+./a.out &
+./a.out
+
+jobs
+./a.out &
+
+./
+
+jobs
+fg 
+sleep 100
+
+jobs
+sleep 100 &
+
+ps
+
+jobs
+fg 
+
+ps
+exit
+sleep 100 &
+
+jobs
+ps
+sleep 100 &
+
+jobs
+fg 
+exit
+sleep 100 &
+
+jobs
+ps
+
+
+exit
+sleep 100 &
+
+jobs
+ps
+
+fg 
+
+jobs
+sleep 100 &
+jobs
+sleep 100
+
+jobs
+fg 
+sleep 100 &
+
+jobs
+ps
+kill 
+jobs
+ps
+sleep 100
+jobs
+exit
+./a.out &
+jobs
+./a.out
+
+jobs
+bg 
+
+jobs
+kill 
+./.aout
+./a.out
+bg 
+
+jobs
+
+bg 
+
+jobs
+kill 
+kill 
+kill 
+kill 
+jobs
+fg 
+
+jobs
+
+bg 
+
+jobs
+./a.out &
+jobs
+bg 
+
+fg 
+exit
+./a.out &
+jobs
+bg 
+fg 
+
+jobs
+exit
+sleep 100
+
+jobs
+./a.out &
+jobs
+fg 
+sleep 100 &
+jopbs
+jobs
+fg 
+exit
+sleep 100 &
+
+jobs
+fg 
+exit
+sleep 100 &
+
+jobs
+exit
+sleep 100 &
+jobs
+ps
+
+fg 
+
+jobs
+
+exit
+sleep 100
+jobs
+sleep 100 &
+
+jobs
+fg 
+
+exit
+sleep 100 &
+jobs
+fg 
+exit
+sleep 100 &
+fg 
+exit
+sleep 100 &
+fg 
+
+jobs
+exit
+sleep 100 &
+jobs
+sleep 100
+fg 
+sleep 100 &
+sleep 100
+
+jobs
+fg 
+fg 
+sleep 100 &
+
+jobs
+exit
+sleep 100 &
+fg 
+jobs
+exit
+
+exit
+sleep 100 &
+
+fg 
+
+jobs
+ps
+sleep 100 &
+
+fg 
+exit
+sleep 100 &
+fg 
+exit
+sleep 100 &
+fg 
+exit
+sleep 100 &
+fg 
+exit
+sleep 100 &
+fg 
+exit
+sleep 100 &
+fg 
+exit
+sleep 100 &
+exit
+sleep 100 &
+
+fg 
+exit
+sleep 100 &
+
+jobs
+fg 
+exit
+sleep 100 &
+fg 
+exit
+sleep 100 &
+
+fg 
+exit
+sleep 100
+jobs
+ps
+fg 
+sleep 100
+jobs
+fg 
+sleep 100
+
+jobs
+fg 
+
+exit
+sleep 100
+jobs
+fg 
+sleep 100
+
+jobs
+fg 
+sleep 100
+
+jobs
+ps
+fg 
+sleep 100
+
+jobs
+ps
+fg 
+jobs
+ps
+exit
+sleep 100
+
+jobs
+fg 
+sleep 100
+
+jobs
+fg 
+sleep 100
+ls
+make
+jobs
+exit
+sleep 100
+
+jobs
+fg 
+sleep 100 
+jobs
+fg 
+sleep 100
+
+jobs
+fg 
+sleep 100
+jobs
+fg 
+sleep 100
+jobs
+fg 
+sleep 100
+fg 
+sleep 100
+fg 
+sleep 100
+ps
+fg 
+sleep 100
+ps
+fg 
+eixt
+exit
+sleep 100
+jobs
+fg 
+
+jobs
+ps
+sleep 100
+fg 
+
+exit
+sleep 100
+fg 
+sleep 100 
+fg 
+exit
+ps
+sleep 100
+exit
+ps
+sleep 100
+fg 
+sleep 100
+fg 
+ps
+sleep 100
+fg 
+exit
+sleep 100
+jobs
+fg 
+sleep 100
+fg 
+sleep 100
+ps
+fg 
+exit
+sleep 100
+
+fg 
+jobs
+ps
+exit
+./a.out &
+fg 
+jobs
+ps
+fg 
+jobs
+bg 
+
+job
+exit
+sleep 100
+jobs
+eexit
+exit
+sleep 100
+
+jobs
+
+sleep 100 &
+jobs
+
+jobs
+ps
+fg 
+
+jobs
+exit
+exurt
+exit
+ls
+ps
+sleep 100
+jobs
+sleep 100
+jobs
+sleep 100
+sleep 100 &
+jobs
+fg 
+jobs
+ps
+fg 
+jobs
+kill 
+kill 
+jobs
+ls | ./a.out &
+
+jobs
+ps
+kill 
+ps
+ls | ./a.out
+jobs
+kill 
+ps
+jobs
+
+ㄷ턋
+exit
+ls
+sleep 1000s &
+jobs
+fg 
+jobs
+fg 
+fg 
+jobs
+fg 
+jobs
+sleep 1000s
+jobs
+sleep 10000s
+
+jobs
+sleep
+sleep 100
+jobs
+kill 
+
+kill 
+jobs
+bg 
+jobs
+sleep 10
+jobs
+ps
+jobs
+fg 
+jobs
+fg 
+jobs
+
+sleep 100s
+jobs
+sleep 10000s
+jobs
+fg 
+jobs
+fg &1
+fg 
+jobs
+ps
+kill 
+jobs
+kill 
+
+sleep &
+
+jobs
+sleep 100 &
+exit
+sleep 100 &
+
+jobs
+ls | grep c &
+
+jobs
+sleep 100 | sort &
+
+jobs
+kill 
+
+./a.out | grep "a" &
+
+jobs
+fg 
+
+jobs
+kill 
+ps
+jobs
+exit
+sleep 100 &
+
+jobs
+ps
+exit
+sleep 100
+
+jobs
+kill 
+jobs
+ps
+exit
+sleep 100
+
+jobs
+kill 
+ps
+jobs
+exit
+sleep 100
+kill 
+ps
+exit
+slepe 100 
+
+sleep 100
+
+jobs
+exit
+jobs
+sleep 100 &
+jobs
+sleep
+
+jobs
+sleep exit
+exit
+sleep
+jobs
+ps
+sleep 100
+
+jobs
+sleep
+
+jobs
+sleep 100 &
+jobs
+exit
+ls | grep c | sort
+ls | grep c | sort&
+
+jobs
+ps
+
+exit
+history
+exit

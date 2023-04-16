@@ -11,29 +11,29 @@ int parseline(char *buf, char **argv);
 int builtin_command(char **argv);
 
 /* My function */
-void removeEnter(char *cmdline);
+void removeEnter(char *cmdline);                                        /* 문자열의 마지막 '\n' 제거 */
 
-void writeHistory(char **argv, char *cmdline);
-void openHistory(int index);
-void callHistory(int index, char *argv);
+void openHistory();                                            /* histor명령어 입력 */    
+void writeHistory(char *cmdline);                                       /* history에 저장 */ 
+void callHistory(int index, char *argv);                                /* history읽어옴 */
 
-void checkBuiltin(int bg, char **argv, char *cmdline);
-void checkcmdline(char *cmdline);
+void checkBuiltin(int bg, char **argv, char *cmdline);                  /* command 명령어 처리 */
+void checkcmdline(char *cmdline);                                       /* !! !# replace */
+void changeStr(char *cmdline, int i, int j, char *str);                 /* !! !# 에 맞게 문자열 변경 */
 
-void changeStr(char *cmdline, int i, int j, char *str);
+int checkPipe(int bg, char **argv, char *cmdline);                      /* | 입력 있는 지 확인 */
 
-int checkPipe(int bg, char **argv, char *cmdline);
+void call_pipe(int bg, char **argv, char *cmdline, int pipe_index);     /* | 입력 시 처리 */
 
-void call_pipe(int bg, char **argv, char *cmdline, int pipe_index);
+void sigint_handler(int sg);                                            /* sigint_handler */
+void sigchld_handler(int sg);                                           /* sigchld_handler */
+void sigtstp_handler(int sg);                                           /* sigtstp_handler */
 
-void sigint_handler(int sg);
-void sigchld_handler(int sg);
-void sigtstp_handler(int sg);
-
-void printJobs();
-void printJob(int pid);
+void printJobs();                                                       /* background에 실행 중인 process 출력 */
+void printJob(int pid);                                                 /* 해당 process 출력 */
 
 /*
+실행중인 process 정보를 linked list로 저장
 num : index
 pid : pidnumber
 status : 0 -> suspended
@@ -50,42 +50,38 @@ typedef struct process
     struct process *next;
 } process;
 
-/*
-num = 0
-next = NULL
-*/
-process *bg_process;
+process *bg_process;                                                    /* background process head */
 
-void addProcess(process *new_process);
-void deleteProcess(process *prev, process *cur);
+void addProcess(process *new_process);                                  /* bg_process의 마지막에 process 추가 */
+void deleteProcess(process *prev, process *cur);                        /* bg_process의 cur제거 */
 
-void foreground(char **argv);
-void background(char **argv);
-void killProcessIndex(char **argv);
-void killProcessPID(int pid);
+void foreground(char **argv);                                           /* fg %# 입력 시 호출 */
+void background(char **argv);                                           /* bg %# 입력 시 호출 */
+void killProcessIndex(char **argv);                                     /* process->Index에 해당하는 process kill */
+void killProcessPID(int pid);                                           /* process->pid에 해당하는 process kill */
 
-char HISTORY_PATH[MAXLINE];
+char HISTORY_PATH[MAXLINE];                                             /* .history 파일의 경로 저장 */
 
-volatile pid_t pid;
-int main_pid;
-int fg_pid;
-char fg_processName[MAXLINE];
+//volatile pid_t pid;
+int main_pid;                                                           /* main process */
+volatile int fg_pid;                                                    /* current foreground process */
+volatile char fg_processName[MAXLINE];                                  /* current foreground processName */
 
-/*
-    new_process를 process linked_list 마지막에 추가
-*/
-void addProcess(process *new_process) {
+/* new_process를 process linked_list 마지막에 추가 */
+void addProcess(process *new_process)
+{
     int index;
     process *tmp_process = bg_process;
-    while(1) {
-        index = tmp_process -> num;
-        if(tmp_process -> next == NULL)
+    while (1)
+    {
+        index = tmp_process->num;
+        if (tmp_process->next == NULL)
             break;
-        tmp_process = tmp_process -> next;
+        tmp_process = tmp_process->next;
     }
 
     new_process->num = index + 1;
-    tmp_process -> next = new_process;
+    tmp_process->next = new_process;
 }
 
 /* cur process를 linked list에서 삭제 */
@@ -95,108 +91,96 @@ void deleteProcess(process *prev, process *cur)
     free(cur);
 }
 
+/* ctrl + z 입력 시 handler */
 void sigtstp_handler(int sig)
 {
-    if(main_pid == getpid()){
-        if(fg_pid != main_pid) {
+    if (main_pid == getpid())                                           /* main process */
+    {
+        if (fg_pid != main_pid)                                         /* main process가 foreground가 아닐 때 */
+        {
             process *tmp_process = bg_process;
-            tmp_process = tmp_process -> next;
+            tmp_process = tmp_process->next;
             int flag = 0;
-            while(1) {
-                if(tmp_process == NULL)
+            while (1)
+            {
+                if (tmp_process == NULL)
                     break;
-                if(tmp_process -> pid == fg_pid){
+                if (tmp_process->pid == fg_pid)
+                {
                     flag = 1;
                     break;
                 }
-                tmp_process = tmp_process -> next;
+                tmp_process = tmp_process->next;
             }
+            if (flag == 0)
+            {
+                process *new_process = (process *)malloc(sizeof(process));
+                new_process->pid = fg_pid;
+                strcpy(new_process->processName, fg_processName);
+                new_process->status = 0;
+                new_process->next = NULL;
 
-            if(flag == 0){
+                addProcess(new_process);
 
-            process *new_process = (process *)malloc(sizeof(process));
-            new_process->pid = fg_pid;
-            strcpy(new_process->processName, fg_processName);
-            new_process->status = 0;
-            new_process->next = NULL;
-
-            addProcess(new_process);
+                kill(fg_pid, SIGTSTP);
+                fg_pid = main_pid;
             }
-            else {
+            else
+            {
                 tmp_process->status = 0;
+
+                kill(fg_pid, SIGTSTP);
+                fg_pid = main_pid;
             }
-            
-            kill(fg_pid, SIGTSTP);
         }
     }
 }
 
+/* ctrl + c 입력 시 handler*/
 void sigint_handler(int sig)
 {
-    // ctrl + c handler
-    if (main_pid == getpid())
+    if (main_pid == getpid())                                           /* main process */
     {
-        if(fg_pid != main_pid) {
-            int index;
-            process *tmp_process = bg_process;
-            tmp_process = tmp_process -> next;
-            process *prev_process = bg_process;
-
-            while(1) {
-                if(tmp_process == NULL)
-                    break;
-
-                if(tmp_process->pid == fg_pid){
-                    deleteProcess(prev_process, tmp_process);
-                }
-
-                prev_process = tmp_process;
-                tmp_process = tmp_process -> next;
-            }
-
+        if (fg_pid != main_pid)
+        {
             kill(fg_pid, SIGKILL);
+            fg_pid = main_pid;
         }
     }
 }
 
+/* sigchld handler */
 void sigchld_handler(int sig)
 {
-    // int olderrno = errno;
     pid_t pid_chld;
-    int status;
-    if(main_pid == getpid()) {
-    while ((pid_chld = waitpid(-1, &status, WNOHANG)) > 0)
+    int status = 0;
+    if (main_pid == getpid())                                           /* main process */
     {
-        int index = 0;
-        process *tmp_process = bg_process;
-        tmp_process = tmp_process -> next;
+        int i = 0;
+        process *cur_process = bg_process;
+        cur_process = cur_process -> next;
         process *prev_process = bg_process;
-        while(1){
-            if(tmp_process == NULL)
+
+        while (1)                                                       /* linked list에 저장되어 있는 process 전부 확인 */
+        {
+            if (cur_process == NULL)
                 break;
 
-            if(tmp_process -> pid == pid_chld) {
-                deleteProcess(prev_process, tmp_process);
+            // pid_chld > 0 -> 종료된 pid num가 저장됨
+            // pid_chld == -1 -> 해당 pid num가 이미 종료되어 있음
+            pid_chld = waitpid(cur_process->pid, status, WNOHANG);
+            if(pid_chld > 0 || pid_chld == -1)
+            {
+                deleteProcess(prev_process, cur_process);
+                cur_process = prev_process;
             }
-
-            prev_process = tmp_process;
-            tmp_process = tmp_process -> next;
+            prev_process = cur_process;
+            cur_process = cur_process->next;
         }
-        //killProcessPID(pid_chld);
-
-        //kill(pid_chld, SIGTERM);
-        // sio_puts("Handler repead child ");
-        // sio_putl((long)pid_chld);
-        // sio_puts("\n");
-
-    }
-    // if (errno != ECHILD)
-    //     sio_error("wait error");
-    // errno = olderrno;
     }
 }
 
-int parseBackground(char *num)
+int parseBackground(char *num)                                          /* fg %#, bg %# parsing */
 {
     if (num == NULL)
         return -2;
@@ -211,20 +195,24 @@ int parseBackground(char *num)
     }
 }
 
-void foreground(char **argv) {
-    int index = parseBackground(argv[1]);
+void foreground(char **argv)                                            /* fg %# 입력 시 호출 */
+{
+    int index = parseBackground(argv[1]);                               /* %# parsing */
 
     int flag = 0;
     process *tmp_process;
-    if(index > 0) {
+    if (index > 0)
+    {
         tmp_process = bg_process;
-        tmp_process = tmp_process -> next;
+        tmp_process = tmp_process->next;
 
-        while(1) {
-            if(tmp_process == NULL)
+        while (1)
+        {
+            if (tmp_process == NULL)
                 break;
 
-            if(tmp_process->num == index) {
+            if (tmp_process->num == index)
+            {
                 flag = 1;
                 break;
             }
@@ -233,33 +221,42 @@ void foreground(char **argv) {
         }
     }
 
-    if(flag == 1) {
+    if (flag == 1)                                                      /* bg_process에 저장되어 있는 process */
+    {
         tmp_process->status = 1;
-        kill(tmp_process->pid, SIGCONT);
+        fg_pid = tmp_process->pid;
+        kill(fg_pid, SIGCONT);                                          /* SIGCONT siganl 전송 */
 
         int status;
-        if(waitpid(pid, &status, WUNTRACED) < 0) {
-            unix_error("waitfg: waitpid error" );
+        if (waitpid(fg_pid, &status, WUNTRACED) < 0)
+        {
+            unix_error("waitfg: waitpid error");
         }
+        fg_pid = main_pid;
     }
-    else {
+    else
+    {
         printf("No Such Job\n");
     }
 }
-void background(char **argv) {
-    int index = parseBackground(argv[1]);
+void background(char **argv)                                            /* bg %# 입력 시 호출 */
+{
+    int index = parseBackground(argv[1]);                               /* %# parsing */
 
     int flag = 0;
     process *tmp_process;
-    if(index > 0) {
+    if (index > 0)
+    {
         tmp_process = bg_process;
-        tmp_process = tmp_process -> next;
+        tmp_process = tmp_process->next;
 
-        while(1) {
-            if(tmp_process == NULL)
+        while (1)
+        {
+            if (tmp_process == NULL)
                 break;
 
-            if(tmp_process->num == index) {
+            if (tmp_process->num == index)
+            {
                 flag = 1;
                 break;
             }
@@ -268,26 +265,26 @@ void background(char **argv) {
         }
     }
 
-    if(flag == 1) {
+    if (flag == 1)                                                      /* bg_process에 저장되어 있는 process */
+    {
         tmp_process->status = 1;
-        kill(tmp_process->pid, SIGCONT);
+        kill(tmp_process->pid, SIGCONT);                                /* SIGCONT signal 전송 */
     }
-    else {
+    else
+    {
         printf("No Such Job\n");
     }
 }
 
-void killProcessIndex(char **argv)
+void killProcessIndex(char **argv)                                      /* Index에 해당하는 process 종료 */
 {
-    // kill(main_pid, SIGTERM);
-    int index = parseBackground(argv[1]);
+    int index = parseBackground(argv[1]);                               /* %# parsing */
 
     if (index <= 0)
     {
         printf("No Such Job\n");
+        return;
     }
-
-    printf("index: %d\n", index);
 
     int flag = 0;
     process *tmp_process = bg_process;
@@ -296,9 +293,7 @@ void killProcessIndex(char **argv)
     tmp_process = tmp_process->next;
     while (1)
     {
-        if(tmp_process == NULL)             // linked list 끝에 도달
-            break;
-        if(tmp_process->num >index)         // num 없음
+        if (tmp_process == NULL)
             break;
 
         if (tmp_process->num == index)
@@ -308,16 +303,14 @@ void killProcessIndex(char **argv)
         }
 
         prev_process = tmp_process;
-        tmp_process = tmp_process->num;
+        tmp_process = tmp_process->next;
     }
 
-    if (flag == 1)
+    if (flag == 1)                                                      /* bg_process에 저장되어 있는 process */
     {
-        printf("killprocess: %d\n", tmp_process->pid);
-        kill(tmp_process->pid, SIGKILL);
-        waitpid(tmp_process->pid, 0, WUNTRACED);
-
-        deleteProcess(prev_process, tmp_process);
+        int tmp_pid = tmp_process->pid;
+        kill(tmp_process->pid, SIGKILL);                                /* SIGKILL signal 전송 */
+        waitpid(tmp_pid, 0, 0);                                         /* process leaping */
     }
     else
     {
@@ -325,27 +318,31 @@ void killProcessIndex(char **argv)
     }
 }
 
-void killProcessPID(int pid) {
+void killProcessPID(int pid)                                            /* PID에 해당하는 process kill */
+{
     process *tmp_process = bg_process;
-    tmp_process = tmp_process -> next;
+    tmp_process = tmp_process->next;
     process *prev_process = bg_process;
 
-    while(1) {
-        if(tmp_process == NULL)
+    while (1)
+    {
+        if (tmp_process == NULL)
             break;
-        if(tmp_process->pid == pid) {
-            kill(tmp_process->pid, SIGKILL);
-            waitpid(tmp_process->pid, 0, 0);
+        if (tmp_process->pid == pid)
+        {
+            int tmp_pid = tmp_process->pid;
+            kill(tmp_process->pid, SIGKILL);                            /* SIGKILL signal 전송 */
+            waitpid(tmp_pid, 0, 0);                                     /* process leaping */
 
-            deleteProcess(prev_process, tmp_process);
+            break;
         }
 
         prev_process = tmp_process;
-        tmp_process = tmp_process->num;
+        tmp_process = tmp_process->next;
     }
 }
 
-void printJobs()
+void printJobs()                                                        /* bg_process에 저장되어 있는 process 출력 */
 {
     process *tmp_process = bg_process;
     tmp_process = tmp_process->next;
@@ -368,7 +365,7 @@ void printJobs()
     }
 }
 
-void printJob(int pid)
+void printJob(int pid)                                                  /* PID process 출력 */
 {
     process *tmp_process = bg_process;
 
@@ -383,7 +380,7 @@ void printJob(int pid)
     printf("[%d] %d\n", tmp_process->num, tmp_process->pid);
 }
 
-void writeJob(int pid, char *cmdline)
+void writeJob(int pid, char *cmdline)                                   /* bg_process에 process추가 */
 {
     process *tmp_process = bg_process;
 
@@ -392,6 +389,8 @@ void writeJob(int pid, char *cmdline)
     {
         if (tmp_process->next == NULL)
             break;
+
+        tmp_process= tmp_process->next;
         index = tmp_process->num;
     }
 
@@ -407,12 +406,10 @@ void writeJob(int pid, char *cmdline)
 
 int main()
 {
-    // main process의 pid num
-    main_pid = getpid();
-    fg_pid = getpid();
+    main_pid = getpid();                                        /* main process pid */
+    fg_pid = main_pid;                                          /* fg_pid 초기화 */
 
-    // HISTORY_PATH에 history경로 저장
-    if (getcwd(HISTORY_PATH, MAXLINE) == NULL)
+    if (getcwd(HISTORY_PATH, MAXLINE) == NULL)                  /* .history path 저장*/
     {
         printf("fail to read path\n");
         exit(1);
@@ -420,14 +417,10 @@ int main()
 
     strcat(HISTORY_PATH, "/.history");
 
-    //  history 파일 생성
-    FILE *file = fopen(HISTORY_PATH, "a");
+    FILE *file = fopen(HISTORY_PATH, "a");                      /* .history 파일 생성 */
     fclose(file);
 
-    // SIGNAL
-    // SIGINT, SIGCHLD, SIGTSTP handler
-    sigset_t mask, prev_mask;
-
+    /* signal handler */
     if (signal(SIGINT, sigint_handler) == SIG_ERR)
         perror("signal error");
 
@@ -437,11 +430,11 @@ int main()
     if (signal(SIGTSTP, sigtstp_handler) == SIG_ERR)
         perror("signal error");
 
-    bg_process = (process *)malloc(sizeof(process));
+    bg_process = (process *)malloc(sizeof(process));            /* bg_process 초기화 */
     bg_process->next = NULL;
     bg_process->num = 0;
 
-    char cmdline[MAXLINE]; /* Command line */
+    char cmdline[MAXLINE];                                      /* Command line */
 
     while (1)
     {
@@ -454,8 +447,6 @@ int main()
         /* Evaluate */
         eval(cmdline);
     }
-
-    free(bg_process);
 }
 /* $end shellmain */
 
@@ -466,20 +457,24 @@ void eval(char *cmdline)
     char *argv[MAXARGS]; /* Argument list execve() */
     char buf[MAXLINE];   /* Holds modified command line */
     int bg;              /* Should the job run in bg or fg? */
-    // pid_t pid;           /* Process id */
 
+
+    /* parsing line */
     removeEnter(cmdline);
-
     checkcmdline(cmdline);
 
     strcpy(buf, cmdline);
     bg = parseline(buf, argv);
 
-    writeHistory(argv, cmdline);
+    if(bg == -1)                        /* 잘못된 입력 */
+        return;
+
+    writeHistory(cmdline);              /* history에 저장*/
 
     if (argv[0] == NULL)
         return; /* Ignore empty lines */
-    checkBuiltin(bg, argv, cmdline);
+    
+    checkBuiltin(bg, argv, cmdline);    /* 명령어 실행 */
 
     return;
 }
@@ -487,14 +482,16 @@ void eval(char *cmdline)
 /* If first arg is a builtin command, run it and return true */
 int builtin_command(char **argv)
 {
-    if (!strcmp(argv[0], "exit")) { /* quit command */
+    if (!strcmp(argv[0], "exit"))               /* exit 입력 시 실행중인 background process 종료 */
+    { /* quit command */
         // free all process
-        process* cur = bg_process;
+        process *cur = bg_process;
         cur = cur->next;
-        process* prev = bg_process;
+        process *prev = bg_process;
 
-        while(1) {
-            if(cur == NULL)
+        while (1)
+        {
+            if (cur == NULL)
                 break;
             kill(cur->pid, SIGKILL);
 
@@ -503,7 +500,7 @@ int builtin_command(char **argv)
             cur = cur->next;
         }
         free(prev);
-        
+
         exit(0);
     }
     if (!strcmp(argv[0], "&")) /* Ignore singleton & */
@@ -515,7 +512,7 @@ int builtin_command(char **argv)
     }
     if (!strcmp(argv[0], "history"))
     {
-        openHistory(-1);
+        openHistory();
         return 1;
     }
     if (!strcmp(argv[0], "jobs"))
@@ -543,103 +540,143 @@ int builtin_command(char **argv)
 /* $end eval */
 /* $begin parseline */
 /* parseline - Parse the command line and build the argv array */
-int parseline(char *buf, char **argv)
-{
-    char *delim_space; /* Points to first space delimiter */
-    char *delim_pipe;
-    int argc; /* Number of args */
-    int bg;   /* Background job? */
-
+/*
+    1) " or ' 입력 시 -> 다음 " or ' 까지 하나의 명령어로 인식
+    2) | 입력 시 하나의 명령어로 인식
+    3) 마지막에 & 입력 시 & 제거 후 return 1, 없을 때 return 0
+    4) 올바르지 않은 값 입력 시 return -1
+*/
+int parseline(char *buf, char **argv) {
+    int bg = 0;
+    int argc = 0;
     char str[MAXLINE];
+    // str[0] = '\0';
 
-    // buf[strlen(buf) - 1] = ' ';   /* Replace trailing '\n' with space */
-    while (*buf && (*buf == ' ')) /* Ignore leading spaces */
-        buf++;
-
-    /* Build the argv list */
-    argc = 0;
-
-    int i = 0, j = 0; // index for ' ', '|'
-    int flag;         // flag for pipe
-    while (1)
-    {
-        if (buf[i] == NULL)
+    int i = 0, j = 0;
+    while(1) {
+        if(*buf == NULL)
             break;
-
-        flag = 0;
-        while (1)
-        {
-            if (buf[j] == NULL)
-            {
-                buf[j + 1] = NULL;
-                break;
-            }
-
-            if (buf[j] == ' ')
-            {
-                break;
-            }
-            if (buf[j] == '|')
-            {
-                flag = 1;
-                break;
-            }
-            j++;
-        }
-
-        if (flag == 1)
-        { // buf[j] = '|'
-            if (j != 0)
-            {
-                buf[j] = '\0';
-                argv[argc++] = buf;
-            }
-
-            argv[argc++] = "|";
-        }
-        else
-        {
-            buf[j] = '\0';
-            argv[argc++] = buf;
-        }
-
-        buf = &(buf[j]) + 1;
-
-        while (*buf && (*buf == ' ')) /* Ignore spaces */
+        while(*buf == ' '){
+            *buf = '\0';
             buf++;
+        }
+        if (*buf == '\"') {                     // 쌍따옴표
+            i = 1;
+            while(1) {
+                if(buf[i] == NULL)
+                    break;
+                if(buf[i] == '\0')
+                    break;
+                if(buf[i] == '\"'){
+                    break;
+                }
+                i++;
+            }
+            if(buf[i] == NULL)
+                return -1;
+            if(buf[i] == '\0')
+                return -1;
+            if(buf[i] == '\"') {
+                buf[i] = '\0';
+                argv[argc++] = buf + 1;
+            }
+            buf += i;
+        }
+        else if(buf[i] == '\'') {                // 따옴표
+            i = 1;
+            while(1) {
+                if(buf[i] == NULL)
+                    break;
+                if(buf[i] == '\0')
+                    break;
+                if(buf[i] == '\''){
+                    break;
+                }
+                i++;
+            }
+            if(buf[i] == NULL)
+                return -1;
+            if(buf[i] == '\0')
+                return -1;
+            if(buf[i] == '\'') {
+                buf[i] = '\0';
+                argv[argc++] = buf + 1;
+            }
+            buf += i;
+        } 
+        else {
+            i = 0;
+            int flag = 0;
+            while(1) {
+                if(buf[i] == NULL) {
+                    buf[i] = '\0';
+                    argv[argc++] = buf;
+                    buf += i;
+                    flag = 1;
+                    break;
+                }
+                else if(buf[i] == '\0') {
+                    argv[argc++] = buf;
+                    buf += i;
+                    flag = 1;
+                    break;
+                }
+                else if(buf[i] == ' ') {
+                    buf[i] = '\0';
+                    argv[argc++] = buf;
+                    buf += i;
+                    break;
+                }
+                else if(buf[i] == '|') {
+                    buf[i] = '\0';
+                    if(i == 0) {
+                        argv[argc++] = "|";
+                        // buf += i;
+                        break;
+                    }
+                    else {
+                        argv[argc++] = buf;
+                        argv[argc++] = "|";
+                        buf += i;
+                        break;
+                    }
+                }
+                i++;
+            }
+            if(flag == 1)
+                break;
+        }
 
-        i = 0, j = 0;
+        buf++;
     }
     argv[argc] = NULL;
 
-    i = 0;
-    while (1)
-    {
-        if (argv[i] == NULL)
-            break;
-
-        i++;
-    }
-
     if (argc == 0) /* Ignore blank line */
-        return 1;
+        return 0;
 
-    /* Should the job run in the background? */
-    if ((bg = (*argv[argc - 1] == '&')) != 0)
-        argv[--argc] = NULL;
+    /* background check & 입력 확인 */
+    if(!strcmp(argv[argc - 1], "&")){
+        if(argc == 1)
+            return -1;
+        argv[argc - 1] = NULL;
+        bg = 1;
+    }
+    else if(argv[argc - 1][strlen(argv[argc - 1]) - 1] == '&') {
+        argv[argc - 1][strlen(argv[argc - 1]) - 1] = '\0';
+        bg = 1;
+    }    
 
     return bg;
 }
-/* $end parseline */
-void removeEnter(char *cmdline)
+
+void removeEnter(char *cmdline)                 /* cmdline 마지막의 '\n'제거 */
 {
     int i = 0;
     while (1)
     {
         if (cmdline[i] == '\n')
         {
-            cmdline[i] = ' ';
-            cmdline[i + 1] = '\0';
+            cmdline[i] = '\0';
             break;
         }
         i++;
@@ -648,11 +685,12 @@ void removeEnter(char *cmdline)
 
 void checkBuiltin(int bg, char **argv, char *cmdline)
 {
-    // pid_t pid;
+    pid_t pid;
     strcpy(fg_processName, cmdline);
 
     if (!builtin_command(argv))
-    { // quit -> exit(0), & -> ignore, other -> run
+    { 
+        // quit -> exit(0), & -> ignore, other -> run
         // pipe가 있는 경우 checkPipe함수에서 처리
         // pipe가 없는 경우 이 함수에서 처리
 
@@ -675,20 +713,19 @@ void checkBuiltin(int bg, char **argv, char *cmdline)
         {
             if ((pid = fork()) == 0)
             {
-                if (!bg)
-                {
-                }
-                else
-                {
-                    //signal(SIGINT, SIG_IGN);
-                    //signal(SIGTSTP, SIG_IGN);
-                    // ignore sigint, sigstsp
-                }
+                /* child process group id를 parent group id와 다르게 함 */
+                setpgid(getpid(), getpid());
+
+                /* signal ignore */
+                signal(SIGINT, SIG_DFL);
+                signal(SIGTSTP, SIG_DFL);
+                signal(SIGCHLD, SIG_IGN);
 
                 if (execvpe(argv[0], argv, environ) < 0)
                 { // ex) /bin/ls ls -al &
                     printf("%s: Command not found.\n", argv[0]);
                 }
+
                 exit(0);
             }
         }
@@ -698,20 +735,21 @@ void checkBuiltin(int bg, char **argv, char *cmdline)
         {
             fg_pid = pid;
             int status;
-            if(waitpid(pid, &status, WUNTRACED) < 0) {
-                unix_error("waitfg: waitpid error" );
+
+            if (waitpid(pid, &status, WUNTRACED) < 0)
+            {
+                unix_error("waitfg: waitpid error");
             }
         }
-        else
+        else                                                        /* background 실행 시 linked list에 추가 */
         { // when there is backgrount process!
-            // printf("[%d] %s\n", pid, cmdline);
             writeJob(pid, cmdline);
             printJob(pid);
         }
     }
 }
 
-int checkPipe(int bg, char **argv, char *cmdline)
+int checkPipe(int bg, char **argv, char *cmdline)                   /* | index 반환 */
 {
     int pipe_index = 0;
     while (1)
@@ -756,8 +794,7 @@ void call_pipe(int bg, char **argv, char *cmdline, int pipe_index)
     */
     int i, j;
 
-    ///////////////////////////////////////////////////////////////
-    /* new_argv 동적할당                                            */
+    /* new_argv -> argv 나누기 */
     i = 0;
     while (1)
     {
@@ -771,7 +808,6 @@ void call_pipe(int bg, char **argv, char *cmdline, int pipe_index)
     {
         new_argv[j] = (char *)malloc(sizeof(char) * MAXLINE);
     }
-    //////////////////////////////////////////////////////////////
 
     // argv -> | 오른쪽 명령어 저장
     // new_argv -> | 왼쪽 명령어 저장
@@ -787,37 +823,48 @@ void call_pipe(int bg, char **argv, char *cmdline, int pipe_index)
     new_argv[j] = NULL;
     argv[pipe_index] = NULL;
 
-    // pid_t pid;
+    // pipe open
+    pid_t pid;
     int fds[2];
     pipe(fds);
 
     pid = fork();
-    if (pid == 0)
-    {
+    if (pid == 0)                                   // child process | 왼쪽 명령어 실행
+    {   
+        // stdout을 pipe in에 연결
         close(fds[0]);
         dup2(fds[1], STDOUT_FILENO);
         close(fds[1]);
-
-        // execvp(argv[0], argv);
 
         checkBuiltin(bg, argv, cmdline);
 
         exit(0);
     }
-    else
+    else                                            // parent process | 오른쪽 명령어 실행
     {
+        // pipe out을 stdout에 연결
         close(fds[1]);
         dup2(fds[0], STDIN_FILENO);
         close(fds[0]);
 
-        waitpid(pid, NULL, 0);
+        waitpid(pid, NULL, 0);                                                  // | 왼쪽 명령어가 종료될 때까지 wait
 
         pipe_index = checkPipe(bg, new_argv, cmdline);
 
-        if (pipe_index == -1)
+        if (pipe_index == -1)                                                   // 더이상 | 가 없는 경우
+        {
+            /* child process group id를 parent group id와 다르게 함 */
+            setpgid(getpid(), getpid());
+
+            /* signal ignore */
+            signal(SIGINT, SIG_DFL);
+            signal(SIGTSTP, SIG_DFL);
+            signal(SIGCHLD, SIG_IGN);
+
             execvp(new_argv[0], new_argv);
+        }
         else
-            call_pipe(bg, new_argv, cmdline, checkPipe(bg, new_argv, cmdline));
+            call_pipe(bg, new_argv, cmdline, checkPipe(bg, new_argv, cmdline)); // pipe가 | 가 있는 경우
     }
 
     // free new_argv
@@ -828,7 +875,7 @@ void call_pipe(int bg, char **argv, char *cmdline, int pipe_index)
     free(new_argv);
 }
 
-void checkcmdline(char *cmdline)
+void checkcmdline(char *cmdline)                        /* cmdline의 !! !# replace */
 {
     char str[MAXLINE];
     int i;
@@ -883,7 +930,7 @@ void checkcmdline(char *cmdline)
         printf("%s\n", cmdline);
 }
 
-void changeStr(char *cmdline, int i, int j, char *str)
+void changeStr(char *cmdline, int i, int j, char *str)          /* string replace */
 {
     char newline[MAXLINE];
     for (int i = 0; i < MAXLINE; i++)
@@ -897,13 +944,7 @@ void changeStr(char *cmdline, int i, int j, char *str)
     strncpy(cmdline, newline, MAXLINE);
 }
 
-// history에 저장
-// 입력한 명령어 저장
-void writeHistory(char **argv, char *cmdline)
-{
-    if (argv[0] == NULL)
-        return;
-
+void writeHistory(char *cmdline) {                                  /* history에 명령어 저장 */
     FILE *file;
 
     // str에 history의 가장 최근 명령어 저장
@@ -918,70 +959,18 @@ void writeHistory(char **argv, char *cmdline)
 
     removeEnter(str);
 
-    // 가장 최근 명령어와 같은 지 확인
-    char *history_argv[MAXARGS]; /* Argument list execve() */
-    char buf[MAXLINE];           /* Holds modified command line */
-    int bg;                      /* Should the job run in bg or fg? */
+    if(strcmp(str, cmdline)) {                                      /* 최근 명령어와 다를 경우만 저장 */
+        file = fopen(HISTORY_PATH, "a");
+        fprintf(file, cmdline);
+        fprintf(file, "\n");
 
-    strcpy(buf, str);
-    bg = parseline(buf, history_argv);
-
-    int i = 0;
-    int flag = 0;
-    while (1)
-    {
-        if (argv[i] == NULL)
-        {
-            if (history_argv[i] != NULL)
-                flag = 1;
-            break;
-        }
-        if (history_argv[i] == NULL)
-        {
-            if (argv[i] != NULL)
-                flag = 1;
-            break;
-        }
-
-        if (strncmp(argv[i], history_argv[i], MAXLINE))
-        {
-            flag = 1;
-            break;
-        }
-        i++;
+        fclose(file);
     }
-
-    // 가장 최근 명령어와 같으면 저장하지 않음
-    if (flag == 0)
-        return;
-
-    // history에 저장
-    file = fopen(HISTORY_PATH, "a");
-    i = 0;
-    while (1)
-    {
-        fprintf(file, argv[i]);
-
-        if (argv[i + 1] == NULL)
-            break;
-        fprintf(file, " ");
-
-        i++;
-    }
-    fprintf(file, "\n");
-
-    fclose(file);
 }
 
-// history읽기
-// index에 해당하는 history를 출력
-// index = 0 -> 가장 최근
-// index = -1 -> 모든 history 출력
-void openHistory(int index)
+void openHistory()                                                  /* history 출력 */
 {
     FILE *file = fopen(HISTORY_PATH, "r");
-
-    // history 명령어로 이 함수 호출하므로 파일이 없는 경우는 없음
 
     char str[MAXLINE];
     int i = 1;
@@ -995,8 +984,8 @@ void openHistory(int index)
     fclose(file);
 }
 
-// index번호에 맞는 명령어 argv[0]에 저장
-// index = -1일 때는 가장 최근 명령어 argv[0]에 저장
+// index번호에 맞는 명령어 returnstring에 저장
+// index = -1일 때는 가장 최근 명령어 저장
 void callHistory(int index, char *returnstring)
 {
     FILE *file = fopen(HISTORY_PATH, "r");
